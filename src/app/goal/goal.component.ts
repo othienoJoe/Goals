@@ -8,14 +8,23 @@ import { Goal  } from '../goal';
 export class GoalComponent implements OnInit {
 
   goals:Goal[] = [
-    {id:1, name:'Watch Coming Home', description:''},
-    {id:2, name:'Buy underpants', description:''},
-    {id:3, name:'Attend last class', description:''},
-    {id:4, name:'Check the previous project', description:''},
-    {id:5, name:'Finish content for today', description:''},
-    {id:6, name:'Read a book', description:''},
+    new Goal(1, 'Watch Coming Home', 'Done'),
+    new Goal(2, 'Buy underpants', 'Done'),
+    new Goal(3, 'Attend last class', 'Done'),
+    new Goal(4, 'Check the previous project', 'Done'),
+    new Goal(5, 'Finish content for today', 'Done'),
+    new Goal(6, 'Read a book', 'Done'),
   ];
 
+  toggleDetails(index: any) {
+    this.goals[index].showDescription = !this.goals[index].showDescription;
+  }
+
+  completeGoal(isComplete: any, index: number) {
+    if (isComplete) {
+      this.goals.splice(index,1);
+    }
+  }
   constructor() { }
 
   ngOnInit(): void {
