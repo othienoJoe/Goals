@@ -35,6 +35,13 @@ export class GoalComponent implements OnInit {
       }
     }
   }
+
+  addNewGoal(goal: any) {
+    let goalLength = this.goals.length;
+    goal.id = goalLength+1;
+    goal.completeDate = new Date(goal.completeGoal)
+    this.goals.push(goal)
+  }
   constructor() { }
 
   ngOnInit(): void {
